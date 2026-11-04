@@ -22,7 +22,7 @@ python Run_Many_Cells.py
 ```
 
 ### An implementation with additional springs placed between every other vertex
-Included in the folder `Springs_EveryOther_Vertex` is an implementation of the same model, but with the addition of springs placed between every other vertex. This framework can help the cell maintain its shape throughout the simulation.
+Included in the folder `Springs_EveryOther_Vertex` is an implementation of the same model, but with the addition of springs placed between every other vertex. This change is implemented in the function `UpdateVertices()` in the file `pol_dir_VBM_springs_eo_func.py` with the addition of rest lengths and spring constants of these additional springs along with their resulting forces. This framework can help the cell maintain its shape throughout the simulation.
 
 ## Implementing directed migration
 Directed migration has been implemented by using the framework for the model outlined in `VertexBasedModel.pdf`, but with two different approaches by biasing different processes within the model (code located in folders `directed_migration_omega_biased` and `directed_migration_onrate_biased`). In both cases, the gradient that is explored is a simple linear gradient in the $x$ direction, defined by the function `lin_grad(x_pos)` in the file `directed_pol_dir_VBM_func.py`.
@@ -33,4 +33,4 @@ The first approach is biasing the internal polarity direction towards the increa
 In this approach, the internal cell direction is biased so that it tries to align with the direction of increasing signal from the gradient rather than the direction of greatest net tension along the boundary. This is implemented in the function `UpdateVertices()` with the parameter `F_a` in the file `directed_pol_dir_VBM_func.py`.
 
 ### Biasing the on rate in `directed_migration_onrate_biased`
-In this approach, the on rate at a vertex is biases such that the on rate at each vertex increases as the signal from the gradient increases. This bias in the increase of on rate is in addition to the on rate dictated from the tension at that vertex and is implemented in the function `find_onrate()` in the file `directed_pol_dir_VBM_func.py`.
+In this approach, the on rate at a vertex is biased such that the on rate at each vertex increases as the signal from the gradient increases. This bias in the increase of on rate is in addition to the on rate dictated from the tension at that vertex and is implemented in the function `find_onrate()` in the file `directed_pol_dir_VBM_func.py`.
